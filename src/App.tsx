@@ -16,7 +16,7 @@ function App() {
       <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex justify-center items-start py-10">
         <div className="w-full max-w-xl bg-white dark:bg-gray-800 shadow-xl rounded-2xl p-6">
           <header className="flex justify-between items-center mb-6">
-            <h1>
+            <h1 className="text-2xl font-bold text-gray-800 dark:text-white">
               Todo App (Context API)
             </h1>
             <ThemeToggleButton/>

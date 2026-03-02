@@ -20,13 +20,21 @@ import { TodoItem } from "./TodoItem";
         {filteredTodos.map((todo) => (
             <TodoItem key={todo.id} todo = {todo}/>
         ))}
-        
-           </ul>
+        </ul>
 
-           <div>
+           <div className="flex justify-between items-center mt-6 text-sm text-gray-600 dark:text-gray-300"> 
             <span>
                 <strong>{itemsLeft}</strong> items left
             </span>
+
+            {completedCount >0 &&(
+                <button
+                 onClick={clearCompleted}
+            className="text-red-500 hover:underline"
+                >
+                    Clear Completed ({completedCount})
+                </button>
+            )}
            </div>
     </div>
   )
