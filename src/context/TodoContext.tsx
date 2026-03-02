@@ -7,10 +7,10 @@ import {
      Children
 
  } from "react";
- import { Todo } from "../types";
+ import type { Todo } from "../types";
 
  
- type State = {
+ interface TodoState {
     todos: Todo[];
  };
 
@@ -21,14 +21,14 @@ import {
  |{type: 'EDIT'; payload:{ id: string; text: string }}
  |{type: 'CLEAR_COMPLETED'; payload: string};
 
- const TodoContext = createContext<{
+ interface TodoContextType {
     todos: Todo[];
   addTodo: (text: string) => void;
   toggleTodo: (id: string) => void;
   deleteTodo: (id: string) => void;
   editTodo: (id: string, newText: string) => void;
   clearCompleted: () => void;
- }| null >(null);
+ }
 
 
  const getInitialTodos = (): Todo[] => {
@@ -42,5 +42,7 @@ function reducer(){}
 
     const [state, dispatch ] = useReducer(reducer,{todos: getInitialTodos(),
 
-    })
+    });
+
+
  }
