@@ -4,14 +4,11 @@ import {
     useReducer, 
     useEffect,
      useMemo,
-     Children
-     ReactNode
-
+     Children,
+     ReactNode,
  } from "react";
  import type { Todo } from "../types";
-import { stringify } from "querystring";
-import { text } from "stream/consumers";
- 
+
  interface TodoState {
     todos: Todo[];
  };
@@ -32,7 +29,7 @@ import { text } from "stream/consumers";
   clearCompleted: () => void;
  }
 
- const TodoContext = createContext<TodoContextType |null>(null);
+ export const TodoContext = createContext<TodoContextType |null>(null);
 
  const reducer = (state: TodoState, action: Action): TodoState => {
     switch(action.type){
