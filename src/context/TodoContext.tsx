@@ -5,9 +5,12 @@ import {
     useEffect,
      useMemo,
      Children
+     ReactNode
 
  } from "react";
  import type { Todo } from "../types";
+import { stringify } from "querystring";
+import { text } from "stream/consumers";
  
  interface TodoState {
     todos: Todo[];
@@ -70,17 +73,19 @@ import {
             todos: stored ? JSON.parse(stored): [],
     };
 
-//     const value: TodoContextType = {
-//     todos: state.todos,
-//     addTodo: (text) => dispatch({ type: "ADD", payload: text }),
-//     toggleTodo: (id) => dispatch({ type: "TOGGLE", payload: id }),
-//     deleteTodo: (id) => dispatch({ type: "DELETE", payload: id }),
-//     editTodo: (id, text) =>
-//       dispatch({ type: "EDIT", payload: { id, text } }),
-//     clearCompleted: () => dispatch({ type: "CLEAR_COMPLETED" }),
-//   };
-
     const [state, dispatch] = useReducer(reducer, initialState);
+
+    const value: TodoContextType = {
+    todos: state.todos,
+    addTodo: (text) => dispatch({ type: "ADD", payload: text }),
+    toggleTodo: (id) => dispatch({ type: "TOGGLE", payload: id }),
+    deleteTodo: (id) => dispatch({ type: "DELETE", payload: id }),
+    editTodo: (id, text) =>
+      dispatch({ type: "EDIT", payload: { id, text } }),
+    clearCompleted: () => dispatch({ type: "CLEAR_COMPLETED",  payload: text }),
+  };
+
+    
 
     useEffect(() => {
         localStorage.setItem("todos", JSON.stringify(state.todos));

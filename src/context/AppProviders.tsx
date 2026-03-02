@@ -5,6 +5,10 @@ import { ThemeProvider } from "./ThemeContext";
 
 export const AppProvider = ({children}:{children: ReactNode}) => {
     return(
-        
+        <ThemeProvider>
+            <TodoProvider>
+                <FilterProvider>{children}</FilterProvider>
+            </TodoProvider>
+        </ThemeProvider>
     )
 }
