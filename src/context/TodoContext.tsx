@@ -31,7 +31,13 @@ import {
  }| null >(null);
 
 
- const getInitialTodos
+ const getInitialTodos = (): Todo[] => {
+    const saved =localStorage.getItem('todos');
+    return saved ? JSON.parse(saved): [];
+ }
+
+function reducer(){}
+
  export const TodoProvider = ({Children}: {Children: Recat.ReactNode}) => {
 
     const [state, dispatch ] = useReducer(reducer,{todos: getInitialTodos(),
