@@ -30,19 +30,39 @@ import {
   clearCompleted: () => void;
  }
 
+ const TodoContext = createContext<TodoContextType |null>(null);
+
+ const reducer = (state: TodoState, action: Action): TodoState => {
+    switch(action.type){
+        case "ADD":
+            return{
+                todos: [...state.todos, 
+                    {id: crypto.randomUUID(), text: action.payload, completed:false},
+                ],
+            };
+
+            case "TOGGLE":
+                return{
+                    todos: state.todos.map((todo) => 
+                        todo.id === action.payload? 
+                    {...todo, completed: !todo.completed}
+                    )
+                }
+    }
+ }
 
  const getInitialTodos = (): Todo[] => {
     const saved =localStorage.getItem('todos');
     return saved ? JSON.parse(saved): [];
  }
 
-function reducer(){}
+// function reducer(){}
 
- export const TodoProvider = ({Children}: {Children: Recat.ReactNode}) => {
+//  export const TodoProvider = ({Children}: {Children: Recat.ReactNode}) => {
 
-    const [state, dispatch ] = useReducer(reducer,{todos: getInitialTodos(),
+//     const [state, dispatch ] = useReducer(reducer,{todos: getInitialTodos(),
 
-    });
+//     });
 
 
- }
+ //}
