@@ -2,7 +2,7 @@ import { useFilter } from "../context/FilterContext";
 import type { FilterType } from "../types";
 
 export const FilterButtons = () => {
-    const [filter, setFilter]: any = useFilter();
+    const {filter, setFilter} = useFilter();
 
     const filters: FilterType[] = ["all", "active", "completed"];
 

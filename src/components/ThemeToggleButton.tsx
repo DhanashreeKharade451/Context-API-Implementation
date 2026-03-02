@@ -4,7 +4,7 @@ import { buffer } from "stream/consumers";
 
 export const ThemeToggleButton = () => {
 
-    const [theme, toggleTheme]: any = useTheme();
+    const {theme, toggleTheme} = useTheme();
 
     return(
         <button

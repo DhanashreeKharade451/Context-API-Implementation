@@ -21,6 +21,8 @@ export const FilterProvider = ({children}: {children: ReactNode }) => {
 
 export const useFilter = () => {
     const context =useContext(FilterContext);
-    if(!context) throw new Error("useFilter must be inside FilterProvider");
-    return
+    if(!context){ 
+        throw new Error("useFilter must be inside FilterProvider");
+    }
+    return context;
 }
