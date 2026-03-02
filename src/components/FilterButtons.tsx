@@ -12,7 +12,7 @@ export const FilterButtons = () => {
                 <button
                 key={item}
                 onClick={() => setFilter(item)}
-                className={`px-3 py-1 rounded-md text-sm capitalize}
+                className={`px-3 py-1 rounded-md text-sm capitalize hover-orange
                 ${filter === item ? 
                     "bg-blue-600 text-white"
                 : "bg-gray-200 hover:bg-gray-300"

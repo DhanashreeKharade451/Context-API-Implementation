@@ -18,7 +18,7 @@ import {
  |{type: 'TOGGLE'; payload: string}
  |{type: 'DELETE'; payload: string}
  |{type: 'EDIT'; payload:{ id: string; text: string }}
- |{type: 'CLEAR_COMPLETED'; payload: string};
+ |{type: 'CLEAR_COMPLETED'};
 
  interface TodoContextType {
     todos: Todo[];
@@ -39,6 +39,15 @@ import {
                     {id: crypto.randomUUID(), text: action.payload, completed:false},
                 ],
             };
+
+            case "EDIT":
+      return {
+        todos: state.todos.map((todo) =>
+          todo.id === action.payload.id
+            ? { ...todo, text: action.payload.text }
+            : todo
+        ),
+      };
 
             case "TOGGLE":
                 return{
@@ -79,7 +88,7 @@ import {
     deleteTodo: (id) => dispatch({ type: "DELETE", payload: id }),
     editTodo: (id, text) =>
       dispatch({ type: "EDIT", payload: { id, text } }),
-    clearCompleted: () => dispatch({ type: "CLEAR_COMPLETED",  payload: text }),
+    clearCompleted: () => dispatch({ type: "CLEAR_COMPLETED" }),
   };
 
     
