@@ -8,7 +8,6 @@ import {
 
  } from "react";
  import type { Todo } from "../types";
-
  
  interface TodoState {
     todos: Todo[];
@@ -45,24 +44,58 @@ import {
                 return{
                     todos: state.todos.map((todo) => 
                         todo.id === action.payload? 
-                    {...todo, completed: !todo.completed}
-                    )
-                }
+                    {...todo, completed: !todo.completed} :todo
+                    ),
+                };
+
+            case "DELETE":
+                return {
+                    todos: state.todos.filter((todo) => todo.id !== action.payload),
+                };
+
+            case "CLEAR_COMPLETED":
+                return {
+                    todos: state.todos.filter((todo) => !todo.completed),
+                };
+
+                default:
+                    return state;
     }
- }
+ };
 
- const getInitialTodos = (): Todo[] => {
-    const saved =localStorage.getItem('todos');
-    return saved ? JSON.parse(saved): [];
- }
+ 
+ export const TodoProvider = ({children}: {children: ReactNode}) => {
+    const stored = localStorage.getItem("todos");
+    const initialState: TodoState = {
+            todos: stored ? JSON.parse(stored): [],
+    };
 
-// function reducer(){}
+//     const value: TodoContextType = {
+//     todos: state.todos,
+//     addTodo: (text) => dispatch({ type: "ADD", payload: text }),
+//     toggleTodo: (id) => dispatch({ type: "TOGGLE", payload: id }),
+//     deleteTodo: (id) => dispatch({ type: "DELETE", payload: id }),
+//     editTodo: (id, text) =>
+//       dispatch({ type: "EDIT", payload: { id, text } }),
+//     clearCompleted: () => dispatch({ type: "CLEAR_COMPLETED" }),
+//   };
 
-//  export const TodoProvider = ({Children}: {Children: Recat.ReactNode}) => {
+    const [state, dispatch] = useReducer(reducer, initialState);
 
-//     const [state, dispatch ] = useReducer(reducer,{todos: getInitialTodos(),
+    useEffect(() => {
+        localStorage.setItem("todos", JSON.stringify(state.todos));
+    },[state.todos]);
 
-//     });
+    return(
+        <TodoContext.Provider value={value}>
+            {children}
+        </TodoContext.Provider>
+    )
+};
 
 
- //}
+export const useTodos = () => {
+    const context = useContext(TodoContext);
+    if (!context) throw new Error("useTodos must be inside TodoProvider");
+    return context;
+};

@@ -4,6 +4,6 @@ export interface Todo {
     completed: boolean;
 }
 
-export type Filetr = 'all' | 'active' | 'completed';
+export type FilterType = 'all' | 'active' | 'completed';
 
-export type Theme = 'light' | 'dark';
+export type ThemeType  = 'light' | 'dark';
