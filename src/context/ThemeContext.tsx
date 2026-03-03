@@ -4,7 +4,7 @@ import {
   useState,
   useEffect,
   ReactNode,
-} from "react";
+  } from "react";
 import type { ThemeType } from "../types";
 
 interface ThemeContextType {

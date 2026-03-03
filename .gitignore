@@ -1,22 +1,22 @@
 Steps to build project:
-Setup Project: Create a Vite React TypeScript project and install Tailwind CSS.
+Setup Project: Created a Vite React TypeScript project and installed Tailwind CSS.
 
 Folder Structure : Organize contexts/, components/, types/, AppProviders.tsx, and App.tsx.
 
-Define Types :Create Todo, FilterType, and ThemeType in types/index.ts.
+Define Types :Created Todo, FilterType, and ThemeType in types/index.ts.
 
-TodoContext : Use useReducer for CRUD + clear completed; persist todos in localStorage.
+TodoContext : Used useReducer for CRUD + clear completed; persist todos in localStorage.
 
-FilterContext : Use useState to track current filter (all, active, completed).
+FilterContext : Used useState to track current filter (all, active, completed).
 
-ThemeContext : Use useState to track theme; apply .dark class to <html>; persist in localStorage.
+ThemeContext : Used useState to track theme; apply .dark class to <html>; persist in localStorage.
 
-AppProviders : Wrap App with ThemeProvider > TodoProvider > FilterProvider.
+AppProviders : Wrapd App with ThemeProvider > TodoProvider > FilterProvider.
 
 Components : Build TodoInput, TodoList, TodoItem, FilterButtons, ThemeToggleButton using Tailwind.
 
 Filtering & Dark Mode :Filter todos based on context; toggle dark mode globally with Tailwind classes.
-: Ensure CRUD, filtering, dark/light theme, and localStorage persistence all work.
+
 
 
 //////////////////////////////////////////////////////////////

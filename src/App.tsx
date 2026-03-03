@@ -6,6 +6,7 @@ import { useTheme } from "./context/ThemeContext";
 import { ThemeToggleButton } from "./components/ThemeToggleButton";
 import { TodoInput } from "./components/TodoInput";
 import { FilterButtons } from "./components/FilterButtons";
+import { TodoList } from "./components/TodoList";
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
 
           <TodoInput/>
           <FilterButtons/>
+          <TodoList/>
         </div>
       </div>
     </div>
