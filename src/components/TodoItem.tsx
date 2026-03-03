@@ -18,7 +18,10 @@ export const TodoItem = ({ todo }: Props) => {
   };
 
   return (
-    <li className="flex items-center justify-between bg-gray-50 dark:bg-gray-700 p-3 rounded-lg shadow-sm">
+    <li className="flex items-center justify-between
+  bg-gray-50 dark:bg-gray-700
+  transition-colors duration-300
+  p-3 rounded-lg shadow-sm">
       <div className="flex items-center gap-3 flex-1">
         <input
           type="checkbox"
